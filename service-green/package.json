@@ -1,0 +1,28 @@
+{
+  "name": "service-green",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^0.16.0",
+    "@opentelemetry/exporter-jaeger": "^0.16.0",
+    "@opentelemetry/node": "^0.16.0",
+    "@opentelemetry/plugin-dns": "^0.13.1",
+    "@opentelemetry/plugin-express": "^0.13.1",
+    "@opentelemetry/plugin-http": "^0.16.0",
+    "@opentelemetry/plugin-mongodb": "^0.13.1",
+    "@opentelemetry/plugins-node-core-and-contrib": "^0.13.1",
+    "@opentelemetry/tracing": "^0.16.0",
+    "cookie-parser": "^1.4.5",
+    "dd-trace": "^0.12.1",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "^0.29.0",
+    "mongodb": "^3.5.9",
+    "morgan": "~1.9.0",
+    "redis": "^4.5.0"
+  }
+}
