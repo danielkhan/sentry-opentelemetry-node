@@ -1,6 +1,21 @@
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+
+const Sentry = require('@sentry/node');
+const Tracing = require("@sentry/tracing");
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  instrumenter: 'otel',
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+  debug: true,
+});
+const sdk = require("../otel/tracing")('service-green');
+
 const createError = require("http-errors");
 const express = require("express");
-const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const indexRouter = require("./routes/index");

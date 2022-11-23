@@ -22,7 +22,13 @@ module.exports = (serviceName) => {
     }),
     //traceExporter,
     spanProcessor: new SentrySpanProcessor(),
-    instrumentations: [getNodeAutoInstrumentations()]
+    instrumentations: [
+      getNodeAutoInstrumentations({
+        "@opentelemetry/instrumentation-fs": {
+          enabled: false,
+        },
+      }),
+    ],
   });
 
   otelApi.propagation.setGlobalPropagator(new SentryPropagator());

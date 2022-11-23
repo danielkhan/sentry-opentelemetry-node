@@ -1,14 +1,8 @@
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+
 const Sentry = require('@sentry/node');
 const Tracing = require("@sentry/tracing");
-
-const createError = require("http-errors");
-const express = require("express");
-const cookieParser = require("cookie-parser");
-const logger = require("morgan");
-
-const app = express();
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
   instrumenter: 'otel',
@@ -19,6 +13,14 @@ Sentry.init({
   debug: true,
 });
 const sdk = require("../otel/tracing")('frontend');
+
+const createError = require("http-errors");
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+
+const app = express();
+
 
 const indexRouter = require("./routes/index");
 
