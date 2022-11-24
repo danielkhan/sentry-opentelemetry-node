@@ -20,7 +20,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
 const app = express();
-
+app.locals.sentryJS = process.env.SENTRY_JS_SRC;
 
 const indexRouter = require("./routes/index");
 
