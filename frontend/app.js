@@ -1,5 +1,5 @@
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const Sentry = require('@sentry/node');
 const Tracing = require("@sentry/tracing");
@@ -20,7 +20,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
 const app = express();
-app.locals.sentryJS = process.env.SENTRY_JS_SRC;
+app.locals.sentryBrowserDSN = process.env.SENTRY_BROWSER_DSN;
 
 const indexRouter = require("./routes/index");
 
