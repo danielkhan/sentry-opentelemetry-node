@@ -4,7 +4,7 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const Sentry = require('@sentry/node');
 const Tracing = require("@sentry/tracing");
 Sentry.init({
-  dsn: process.env.SENTRY_DSN,
+  dsn: process.env.SENTRY_GATEWAY_DSN,
   instrumenter: 'otel',
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
