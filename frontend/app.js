@@ -2,7 +2,6 @@ const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const Sentry = require('@sentry/node');
-const Tracing = require("@sentry/tracing");
 Sentry.init({
   dsn: process.env.SENTRY_FRONTEND_DSN,
   instrumenter: 'otel',
