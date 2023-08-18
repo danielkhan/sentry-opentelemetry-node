@@ -36,3 +36,4 @@ Do get the logs for a service, run `pm2 logs servicename`.
 
 ## Known Issues
 * Currently some transactions may show up as `<< unparameterized >>`.
+* Currently the frontend traces don't connected to the backend traces.
