@@ -16,6 +16,7 @@
     "@opentelemetry/plugins-node-core-and-contrib": "^0.13.1",
     "@opentelemetry/tracing": "^0.16.0",
     "@sentry/node": "^7.21.1",
+    "@sentry/node-experimental": "^7.64.0",
     "cookie-parser": "^1.4.6",
     "dd-trace": "^0.12.1",
     "debug": "~2.6.9",

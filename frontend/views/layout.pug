@@ -2,18 +2,7 @@ doctype html
 html
   head
     title= title
-    script(src="https://browser.sentry-cdn.com/7.21.1/bundle.tracing.min.js"
-  integrity="sha384-1MTgFwp9zb14K+BOaYA9Y4H/I3s3IUNIQRPYEHgR19NS1rl8d5KCjP9NfM7o1Bnz"
-  crossorigin="anonymous")
-    script.
-      Sentry.init({
-        dsn: "!{sentryBrowserDSN}",
-        // This enables automatic instrumentation (highly recommended), but is not
-        // necessary for purely manual usage
-        integrations: [new Sentry.BrowserTracing()],
-        // To set a uniform sample rate
-        tracesSampleRate: 1
-      });
+    script(src=`${sentryBrowserDSN}` crossorigin='anonymous')
 
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
     link(rel='stylesheet', href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous")

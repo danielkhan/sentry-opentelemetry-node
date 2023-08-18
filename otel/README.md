@@ -1,0 +1,1 @@
+This directory contains a tracer setup for OpenTelemetry that is not needed any longer but kept here for reference.
