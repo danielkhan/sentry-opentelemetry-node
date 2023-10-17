@@ -7,8 +7,7 @@
   },
   "dependencies": {
     "@sentry/node": "^7.21.1",
-    "@sentry/node-experimental": "^7.64.0",
-    "@sentry/opentelemetry-node": "^7.21.1",
+    "@sentry/node-experimental": "^7.74.1",
     "axios": "^0.21.4",
     "cookie-parser": "^1.4.6",
     "dd-trace": "^0.12.1",

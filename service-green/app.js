@@ -3,11 +3,14 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const Sentry = require('@sentry/node-experimental');
 
-Sentry.init({
-  dsn: process.env.SENTRY_SERVICE_GREEN_DSN,
-  tracesSampleRate: 1.0,
-});
-// const sdk = require("../otel/tracing")('service-green');
+if(process.env.SENTRY) {
+  Sentry.init({
+    dsn: process.env.SENTRY_SERVICE_GREEN_DSN,
+    tracesSampleRate: 1.0,
+  });
+} else {
+  const sdk = require("../otel/tracing")('service-green');
+}
 
 const createError = require("http-errors");
 const express = require("express");
