@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const sdk = require("../../otel/tracing")('service-blue');
+// const sdk = require("../../otel/tracing")('service-blue');
 
 /**
  * Module dependencies.

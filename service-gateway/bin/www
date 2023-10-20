@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const sdk = require("../../otel/tracing")('service-gateway');
+// const sdk = require("../../otel/tracing")('service-gateway');
 
 const app = require("../app");
 const debug = require("debug")("service-1:server");
