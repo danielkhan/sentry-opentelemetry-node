@@ -6,17 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@opentelemetry/api": "^0.16.0",
-    "@opentelemetry/exporter-jaeger": "^0.16.0",
-    "@opentelemetry/node": "^0.16.0",
-    "@opentelemetry/plugin-dns": "^0.13.1",
-    "@opentelemetry/plugin-express": "^0.13.1",
-    "@opentelemetry/plugin-http": "^0.16.0",
-    "@opentelemetry/plugin-mongodb": "^0.13.1",
-    "@opentelemetry/plugins-node-core-and-contrib": "^0.13.1",
-    "@opentelemetry/tracing": "^0.16.0",
-    "@sentry/node": "^7.21.1",
     "@sentry/node-experimental": "^7.74.1",
+    "@opentelemetry/api": "^1.6.0",
     "cookie-parser": "^1.4.6",
     "dd-trace": "^0.12.1",
     "debug": "~2.6.9",
@@ -27,5 +18,8 @@
     "mongodb": "^3.7.3",
     "morgan": "~1.9.0",
     "redis": "^4.5.1"
+  },
+  "volta": {
+    "node": "18.18.2"
   }
 }

@@ -2,15 +2,10 @@ const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const Sentry = require('@sentry/node-experimental');
 
-if(process.env.SENTRY) {
-  Sentry.init({
-    dsn: process.env.SENTRY_GATEWAY_DSN,
-    tracesSampleRate: 1.0,
-  });
-} else {
-  const sdk = require("../otel/tracing")('service-gateway');
-}
-
+Sentry.init({
+  dsn: process.env.SENTRY_GATEWAY_DSN,
+  tracesSampleRate: 1.0,
+});
 
 const createError = require("http-errors");
 const express = require("express");
@@ -31,6 +26,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter());
+
+app.use(Sentry.Handlers.errorHandler());
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
