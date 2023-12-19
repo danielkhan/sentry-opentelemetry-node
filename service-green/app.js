@@ -7,6 +7,7 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
+const tracer = Sentry.getClient().tracer;
 
 const createError = require("http-errors");
 const express = require("express");
@@ -25,7 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+app.use("/", indexRouter(tracer));
 
 app.use(Sentry.Handlers.errorHandler());
 

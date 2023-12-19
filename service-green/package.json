@@ -6,10 +6,9 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@sentry/node-experimental": "^7.74.1",
     "@opentelemetry/api": "^1.6.0",
+    "@sentry/node-experimental": "^7.74.1",
     "cookie-parser": "^1.4.6",
-    "dd-trace": "^0.12.1",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -21,5 +20,13 @@
   },
   "volta": {
     "node": "18.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",  
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.1.1"
   }
 }

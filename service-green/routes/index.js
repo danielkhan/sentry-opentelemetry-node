@@ -6,6 +6,7 @@ const client = new MongoClient(uri);
 const opentelemetry = require("@opentelemetry/api");
 const tracer = opentelemetry.trace.getTracer("details");
 
+module.exports = () => {
 /* GET home page. */
 router.get("/", async (req, res, next) => {
   await tracer.startActiveSpan("main", async (parentSpan) => {
@@ -16,7 +17,7 @@ router.get("/", async (req, res, next) => {
       const database = client.db("voting");
       const votes = database.collection("votes");
 
-      if (req.query.choice) {
+      if (req.query.choice) { 
         const insertSpan = tracer.startSpan("mongo-insert");
         await votes.insertOne({ choice: req.query.choice });
         insertSpan.end();
@@ -33,5 +34,8 @@ router.get("/", async (req, res, next) => {
     }
   });
 });
+}
+
+
 
 module.exports = router;
