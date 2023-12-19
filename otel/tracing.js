@@ -1,33 +1,42 @@
-const {SentrySpanProcessor, SentryPropagator} = require('@sentry/opentelemetry-node');
+const {
+  SentrySpanProcessor,
+  SentryPropagator
+} = require("@sentry/opentelemetry-node");
 
-const { node } = require('@opentelemetry/sdk-node');
+const { node } = require("@opentelemetry/sdk-node");
 
 const { NodeTracerProvider } = node;
 
-const opentelemetry = require('@opentelemetry/api');
-const { registerInstrumentations } = require('@opentelemetry/instrumentation');
-const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
-const { ConsoleSpanExporter, BatchSpanProcessor, SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-base');
-const { Resource } = require('@opentelemetry/resources');
-const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
-const { JaegerExporter } = require('@opentelemetry/exporter-jaeger');
+const opentelemetry = require("@opentelemetry/api");
+const { registerInstrumentations } = require("@opentelemetry/instrumentation");
+const {
+  getNodeAutoInstrumentations
+} = require("@opentelemetry/auto-instrumentations-node");
+const {
+  ConsoleSpanExporter,
+  BatchSpanProcessor,
+  SimpleSpanProcessor
+} = require("@opentelemetry/sdk-trace-base");
+const { Resource } = require("@opentelemetry/resources");
+const {
+  SemanticResourceAttributes
+} = require("@opentelemetry/semantic-conventions");
+const { JaegerExporter } = require("@opentelemetry/exporter-jaeger");
+
 const jaegerExporter = new JaegerExporter();
 
+const process = require("process");
 
-
-const process = require('process');
-
-let sdks = []; 
+const sdks = [];
 
 module.exports = (serviceName) => {
-
-  if(sdks[serviceName]) return sdks[serviceName];
+  if (sdks[serviceName]) return sdks[serviceName];
 
   const provider = new NodeTracerProvider({
     resource: new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: serviceName,
-    }),
-  }); 
+      [SemanticResourceAttributes.SERVICE_NAME]: serviceName
+    })
+  });
 
   provider.addSpanProcessor(new SimpleSpanProcessor(jaegerExporter));
   provider.addSpanProcessor(new SentrySpanProcessor());
@@ -35,9 +44,9 @@ module.exports = (serviceName) => {
   registerInstrumentations({
     instrumentations: getNodeAutoInstrumentations({
       "@opentelemetry/instrumentation-fs": {
-        enabled: false,
-      },
-    }),
+        enabled: false
+      }
+    })
   });
 
   return opentelemetry.trace.getTracer(serviceName);
@@ -82,4 +91,4 @@ module.exports = (serviceName) => {
 
   return sdk;
     */
-}
+};
