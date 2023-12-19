@@ -32,6 +32,7 @@ router.get("/", async (req, res, next) => {
       return res.json({ spaces, tabs });
     } catch (err) {
       console.log(err);
+      parentSpan.end();
       return next(err);
     }
   });

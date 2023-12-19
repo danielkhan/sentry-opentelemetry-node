@@ -51,13 +51,14 @@ router.get("/", async (req, res, next) => {
       const tabs = await votes.countDocuments({ choice: "tabs" });
       // countSpan.end();
 
-      // parentSpan.end();
+      parentSpan.end();
       return res.json({
         spaces,
         tabs
       });
     } catch (err) {
       console.log(err);
+      parentSpan.end();
       return next(err);
     }
   });
