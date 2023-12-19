@@ -36,7 +36,7 @@ router.get("/", async (req, res, next) => {
         fiboSpan.end();
       }
 
-      if (Math.random() < 0.8) {
+      if (Math.random() < 0.2) {
         throw new Error("Something went wrong here!");
       }
 
