@@ -1,11 +1,15 @@
+require("../otel/tracing")("service-green");
+
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const Sentry = require("@sentry/node-experimental");
 
+/*
 Sentry.init({
   dsn: process.env.SENTRY_SERVICE_GREEN_DSN,
   tracesSampleRate: 1.0
 });
+*/
 
 const createError = require("http-errors");
 const express = require("express");
