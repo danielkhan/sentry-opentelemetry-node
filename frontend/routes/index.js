@@ -1,11 +1,12 @@
 const express = require("express");
+
 const router = express.Router();
 const axios = require("axios");
 const request = require("request");
 
 const votes = {
   spaces: [],
-  tabs: [],
+  tabs: []
 };
 
 const visits = [];
@@ -35,12 +36,12 @@ module.exports = () => {
   });
 
   router.get("/traces", (req, res, next) => {
-    const host = req.headers["host"];
+    const {host} = req.headers;
     return res.redirect(`http://${host}:16686`);
   });
 
   router.get("/metrics", (req, res, next) => {
-    const host = req.headers["host"];
+    const {host} = req.headers;
     return res.redirect(`http://${host}:3000`);
   });
 
