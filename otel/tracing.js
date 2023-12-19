@@ -17,7 +17,7 @@ const jaegerExporter = new JaegerExporter();
 
 const process = require('process');
 
-let sdks = [];
+let sdks = []; 
 
 module.exports = (serviceName) => {
 
@@ -27,7 +27,7 @@ module.exports = (serviceName) => {
     resource: new Resource({
       [SemanticResourceAttributes.SERVICE_NAME]: serviceName,
     }),
-  });
+  }); 
 
   provider.addSpanProcessor(new SimpleSpanProcessor(jaegerExporter));
   provider.addSpanProcessor(new SentrySpanProcessor());
